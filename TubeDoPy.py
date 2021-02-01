@@ -26,7 +26,6 @@ def comprobar():
     
     
 
-
 class threadsPool():
 
     '''
