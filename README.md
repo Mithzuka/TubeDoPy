@@ -23,8 +23,7 @@
     Dentro coloca los siguientes archivos:
                                           - tubedopy_beta.py 
                                           - TubeDoPy.py
-                                          - donate.gif
-    
+                                            
     
 
     Cualquier duda o comentario favor de mandarlo a mi correo 'govetzka@gmail.com'.
