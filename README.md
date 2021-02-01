@@ -17,6 +17,8 @@
                             (En este link explica el uso y como conseguir la clave*: 
                             https://stackoverflow.com/questions/62345198/extract-individual-links-from-a-single-youtube-playlist-link-using-python)
 
+
+    Para que el programa funcione correctamente pon los scripts en una carpeta en C:\Users\NOMBREUSUARIO\TubeDoPy
     
 
     Cualquier duda o comentario favor de mandarlo a mi correo 'govetzka@gmail.com'.
