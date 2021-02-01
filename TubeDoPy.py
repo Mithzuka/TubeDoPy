@@ -16,8 +16,9 @@ def comprobar():
         la URL viene de una lista o es un link individual.
     '''
 
-
-    if '&list=' in url_box.get():
+    if not tdp.comprobar_url(url_box.get()) == True:
+        label_info['text'] = 'Ingresa una URL valida'        
+    elif '&list=' in url_box.get():
         threadsPool()
     else:
         tdp.comprobar_url(url_box.get())
@@ -55,14 +56,14 @@ class threadsPool():
 
         for link in listas:
                         
-            label_comp['text'] = f'Descargando {link}'
+            label_info['text'] = f'Descargando {link}'
             tdp.download_aud(ref_url=link)
             tdp.convert_aud(aud_ext=link)
-            label_comp['text'] = f'Descargado {tdp.get_name(link_vid=link)}'
+            label_info['text'] = f'Descargado {tdp.get_name(link_vid=link)}'
 
         self.verification += 1        
         
-        label_comp['text'] = f'La lista {self.verification} de 2 se ha descargado.'
+        label_info['text'] = f'La lista {self.verification} de 2 se ha descargado.'
                 
 
     def refers(self):
@@ -80,10 +81,10 @@ class threadsPool():
 def s_down():
 
     link = url_box.get()
-    label_comp['text'] =  'Iniciando descarga'
+    label_info['text'] =  'Iniciando descarga'
     tdp.download_aud(link)
     tdp.convert_aud(link)
-    label_comp['text'] = f'({tdp.get_name(link)}) Descargado con exito.'
+    label_info['text'] = f'({tdp.get_name(link)}) Descargado con exito.'
     
 
 
@@ -99,35 +100,37 @@ frame.pack
 url_box = tk.Entry(root, width = 65)
 url_box.pack()
 
-
+# Etiqueta url
 label_url = tk.Label(root, font = 'Helvetica 20', text = 'Ingresa Url')
 label_url.pack()
 
-label_comp = tk.Label(root, font = '20')
-label_comp.pack(pady=20)
+# Etiqueta informativa
+label_info = tk.Label(root, font = '20')
+label_info.pack(pady=20)
 
-label_name = tk.Label(root, font=1, text='Created by: Mitzuka')
-label_name.pack(side=tk.BOTTOM)
-
-label_ver = tk.Label(root, font=1, text='Beta Version')
-label_ver.pack(side=tk.BOTTOM)
-
+# Boton Descarga
 dload_button = tk.Button(
     root, text = 'Descarga!', command = lambda: td(target=comprobar).start()
 )
 dload_button.pack(pady=20)
 
-img_paypal = tk.PhotoImage(file=path_imgDonate)
+# Imagen Donacion
+try:
+    img_paypal = tk.PhotoImage(file=path_imgDonate)    
+except:
+    img_paypal = None
 
-def ars():
-    labelprueba.config(text='You clicked the button... :D')
-
-
-donate_button = tk.Button(root, image=img_paypal, command=ars)
+# Boton Donacion
+donate_button = tk.Button(root, image=img_paypal, text='Donar', command= lambda: os.system("start \"\" https://www.paypal.com/donate/?hosted_button_id=Q5C7GNUUAKBSJ"))
 donate_button.pack(pady=20)
 
-labelprueba = tk.Label(root, text='')
-labelprueba.pack(pady=20)
+# Creador
+label_name = tk.Label(root, font=1, text='Created by: Mitzuka')
+label_name.pack(side=tk.BOTTOM)
+
+# Version
+label_ver = tk.Label(root, font=1, text='Beta Version')
+label_ver.pack(side=tk.BOTTOM)
 
 root.title('TubeDoPy')
 root.mainloop()
