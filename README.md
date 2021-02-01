@@ -2,11 +2,12 @@
  Audio downloader from Youtube. Made in python
  
     
-    Autor: Mithzuka (Daniel Velazquez)
-    Nombre: TubeDoPy
-    Version: Beta (0.1) 
+    Autor:    Mithzuka (Daniel Velazquez)
+    Nombre:   TubeDoPy
+    Version:  Beta (0.1) 
     Fecha salida: 31/01/2021
     Para SO: Windows 10
+    
 
     Actualmente el programa esta hecho para descargar unicamente audio en la mejor calidad
     posible y de YouTube solamente.
@@ -18,7 +19,12 @@
                             https://stackoverflow.com/questions/62345198/extract-individual-links-from-a-single-youtube-playlist-link-using-python)
 
 
-    Para que el programa funcione correctamente pon los scripts en una carpeta en C:\Users\NOMBREUSUARIO\TubeDoPy
+    Para que el programa funcione correctamente crea una carpeta llamada 'TubeDoPy' en la ruta C:\Users\NOMBREUSUARIO\TubeDoPy
+    Dentro coloca los siguientes archivos:
+                                          - tubedopy_beta.py 
+                                          - TubeDoPy.py
+                                          - donate.gif
+    
     
 
     Cualquier duda o comentario favor de mandarlo a mi correo 'govetzka@gmail.com'.
