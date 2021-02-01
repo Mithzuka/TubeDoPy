@@ -4,12 +4,17 @@ from threading import Thread as td
 from multiprocessing import Pool
 import os
 
+
 tdp = tubedopy()
 path_imgDonate = os.path.expanduser('~').replace('\\', '/')
 path_imgDonate += '/TubeDoPy/donate.gif'
 
 
 def comprobar():
+    '''
+        Al activar el boton de descarga entra aqui y comprueba si
+        la URL viene de una lista o es un link individual.
+    '''
 
 
     if '&list=' in url_box.get():
@@ -23,6 +28,12 @@ def comprobar():
 
 
 class threadsPool():
+
+    '''
+        La clase empieza obteniendo el contenido de la caja de texto
+        posteriormente trae las URL'S en una lista la cual se divide
+        en dos listas y se llaman a dos hilos a descargar las canciones.
+    '''
 
     def __init__(self):
 
