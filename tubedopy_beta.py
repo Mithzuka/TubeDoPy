@@ -8,7 +8,7 @@ from urllib.parse import parse_qs, urlparse
 '''
     Autor: Mithzuka (Daniel Velazquez)
     Nombre: TubeDoPy
-    Version: Beta 0.1
+    Version: Beta 1.4.0.2127
     Fecha salida: 31/01/2021
     Para SO: Windows 10
 
@@ -92,20 +92,24 @@ class tubedopy():
             Cambia la extencion del archivo a mp3
         '''
 
-        self.aud_ext = yt(aud_ext)
+        self.aud_ext = yt(aud_ext).title
+
+        for a in '\\/<>"?|*:':
+            self.aud_ext = self.aud_ext.replace(a, '')
+
         self.act_ext = ''
-        self.new_ext = self.aud_ext.title
+        self.new_ext = self.aud_ext
         self.new_ext += '.mp3'
 
         for entry in os.scandir():
             if not entry.name.startswith('.') and entry.is_file():
-                if self.aud_ext.title in entry.name:
+                if self.aud_ext in entry.name:
                     self.act_ext = entry.name
                     break
 
         os.replace(self.act_ext, self.new_ext)
 
-    def get_linkpl(self, ref_purl=None):
+    def get_linkpl(self, ref_purl=None, ApiKey=None):
         '''
             Extrae los links de una playlist y los retorna en una lista.
         '''
@@ -116,7 +120,7 @@ class tubedopy():
         playlist_id = query["list"][0]
 
         print(f'get all playlist items links from {playlist_id}')
-        youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = "YOUR_API_KEY")
+        youtube = googleapiclient.discovery.build("youtube", "v3", developerKey = ApiKey)
 
         request = youtube.playlistItems().list(
             part = "snippet",

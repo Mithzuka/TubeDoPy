@@ -4,7 +4,7 @@
     
     Autor:    Mithzuka (Daniel Velazquez)
     Nombre:   TubeDoPy
-    Version:  Beta (0.1) 
+    Version:  Beta (1.4.0.2127) 
     Fecha salida: 31/01/2021
     Para SO: Windows 10
     
@@ -15,7 +15,7 @@
     siguientes librerias:
                           - pip install pytube
                           - pip3 install --upgrade google-api-python-client
-                            (En este link explica el uso y como conseguir la clave*: 
+                            (En este link explica el uso y como conseguir la API_KEY*: 
                             https://stackoverflow.com/questions/62345198/extract-individual-links-from-a-single-youtube-playlist-link-using-python)
 
 

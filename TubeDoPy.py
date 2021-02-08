@@ -3,6 +3,7 @@ from tubedopy_beta import tubedopy
 from threading import Thread as td
 from multiprocessing import Pool
 import os
+# from traceback import NameError
 
 
 tdp = tubedopy()
@@ -39,7 +40,10 @@ class threadsPool():
 
         self.verification = 0
 
-        self.enlaces = tdp.get_linkpl(url_box.get())
+        try:
+            self.enlaces = tdp.get_linkpl(ref_purl = url_box.get(), ApiKey = apiKeyBox.get())
+        except:
+            label_info['text'] = 'Ingresa una APIKEY valida\nMas informacion lea la documentacion.'
 
         self.start_download()
 
@@ -86,7 +90,9 @@ def s_down():
     label_info['text'] = f'({tdp.get_name(link)}) Descargado con exito.'
     
 
-
+def paste(self, event):
+        text = self.selection_get(selection='CLIPBOARD')
+        self.insert('insert', text)
 
 
 # Ventana
@@ -95,13 +101,21 @@ root.geometry('800x600')
 frame = tk.Frame(root)
 frame.pack
 
-# Cuadro para ingresar url
-url_box = tk.Entry(root, width = 65)
-url_box.pack()
+# Etiqueta APIKEY
+label_ApiKey = tk.Label(root, font = 'Helvetica 10', text = 'Coloca la API KEY aqui.')
+label_ApiKey.pack(side=tk.TOP)
+
+# Cuadro de la APIKEY
+apiKeyBox = tk.Entry(root, width = 44)
+apiKeyBox.pack()
 
 # Etiqueta url
 label_url = tk.Label(root, font = 'Helvetica 20', text = 'Ingresa Url')
-label_url.pack()
+label_url.pack(pady=20)
+
+# Cuadro para ingresar url
+url_box = tk.Entry(root, width = 65)
+url_box.pack()
 
 # Etiqueta informativa
 label_info = tk.Label(root, font = '20')
@@ -120,7 +134,7 @@ except:
     img_paypal = None
 
 # Boton Donacion
-donate_button = tk.Button(root, image=img_paypal, text='Donar', command= lambda: os.system("start \"\" https://www.paypal.com/donate/?hosted_button_id=Q5C7GNUUAKBSJ"))
+donate_button = tk.Button(root, image=img_paypal, text='Donar', command= lambda: os.system("start https://www.paypal.com/donate/?hosted_button_id=Q5C7GNUUAKBSJ"))
 donate_button.pack(pady=20)
 
 # Creador
@@ -128,7 +142,7 @@ label_name = tk.Label(root, font=1, text='Created by: Mitzuka')
 label_name.pack(side=tk.BOTTOM)
 
 # Version
-label_ver = tk.Label(root, font=1, text='Beta Version')
+label_ver = tk.Label(root, font=1, text='Beta Version. 1.4.0.2127')
 label_ver.pack(side=tk.BOTTOM)
 
 root.title('TubeDoPy')
